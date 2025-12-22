@@ -99,4 +99,4 @@ This program implements the following statistical calculations:
 
 ## License
 
-MIT License - see [LICENSE](LICENSE) file for details
+[MIT LICENSE](LICENSE)

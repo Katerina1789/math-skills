@@ -2,20 +2,20 @@
 package main
 
 import (
-	"bufio"   // Provides buffered I/O for efficient file reading
 	"fmt"     // Formats and prints output to console
-	"log"     // Handles error logging and program termination
 	"math"    // Provides mathematical functions like Round and Sqrt
 	"os"      // Accesses command-line arguments and file operations
 	"sort"    // Sorts slices for median calculation
 	"strconv" // Converts strings to numbers
+	"strings" // Splits file content into lines
 )
 
 // main is the entry point that orchestrates reading data and calculating statistics
 func main() {
 	// Check if a file path argument was provided
 	if len(os.Args) < 2 {
-		log.Fatal("Usage: go run main.go <data_file>")
+		fmt.Println("Usage: go run main.go <data_file>")
+		os.Exit(1)
 	}
 
 	// Get the file path from command-line arguments
@@ -23,7 +23,8 @@ func main() {
 	// Read all numbers from the file into a slice
 	numbers, err := readNumbersFromFile(filePath)
 	if err != nil {
-		log.Fatal(err)
+		fmt.Println(err)
+		os.Exit(1)
 	}
 
 	// Calculate all required statistical measures
@@ -41,22 +42,20 @@ func main() {
 
 // readNumbersFromFile reads integers from a file and returns them as float64 slice
 func readNumbersFromFile(path string) ([]float64, error) {
-	// Open the file at the given path
-	file, err := os.Open(path)
+	// Read entire file content
+	content, err := os.ReadFile(path)
 	if err != nil {
 		return nil, err
 	}
-	// Ensure file is closed when function exits
-	defer file.Close()
+
+	// Split content into lines
+	lines := strings.Split(string(content), "\n")
 
 	// Initialize slice to store numbers
 	var nums []float64
-	// Create scanner to read file line by line
-	scanner := bufio.NewScanner(file)
 
-	// Read each line from the file
-	for scanner.Scan() {
-		line := scanner.Text()
+	// Process each line
+	for _, line := range lines {
 		// Skip empty lines
 		if line == "" {
 			continue
@@ -68,11 +67,6 @@ func readNumbersFromFile(path string) ([]float64, error) {
 		}
 		// Append as float64 for statistical calculations
 		nums = append(nums, float64(value))
-	}
-
-	// Check for any scanning errors
-	if err := scanner.Err(); err != nil {
-		return nil, err
 	}
 
 	return nums, nil
