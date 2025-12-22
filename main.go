@@ -1,13 +1,12 @@
-// Package main calculates statistical measures from a data file
 package main
 
 import (
-	"fmt"     // Formats and prints output to console
-	"math"    // Provides mathematical functions like Round and Sqrt
-	"os"      // Accesses command-line arguments and file operations
-	"sort"    // Sorts slices for median calculation
-	"strconv" // Converts strings to numbers
-	"strings" // Splits file content into lines
+	"fmt"     // Print messages and results
+	"math"    // Math functions: Round, Sqrt
+	"os"      // Command-line args and file reading
+	"sort"    // Sorting slice for median
+	"strconv" // String to int conversion
+	"strings" // Splitting file content into lines
 )
 
 // main is the entry point that orchestrates reading data and calculating statistics
@@ -102,7 +101,7 @@ func median(nums []float64) float64 {
 		return cpy[mid]
 	}
 	// For even length, return average of two middle elements
-	return (cpy[mid-1] + cpy[mid]) / 2.0
+	return (cpy[mid-1] + cpy[mid]) / 2
 }
 
 // variance measures how spread out the numbers are from the mean
