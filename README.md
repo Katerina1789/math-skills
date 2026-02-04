@@ -23,19 +23,19 @@ All results are output as rounded integers following the project specifications.
 
 ## Features
 
-✨ **Core Functionality**
+**Core Functionality**
 - Calculates Average, Median, Variance, and Standard Deviation
 - Handles datasets of any size
 - Robust error handling for invalid input
 - Standard library only (no external dependencies)
 
-🏗️ **Professional Structure**
+**Professional Structure**
 - Modular package design with separated concerns
 - Comprehensive unit tests for all functions
 - Clean architecture following Go best practices
 - Makefile for easy build and test automation
 
-📊 **Accurate Calculations**
+**Accurate Calculations**
 - Population variance (not sample variance)
 - Proper median calculation for even/odd counts
 - Standard mathematical rounding
