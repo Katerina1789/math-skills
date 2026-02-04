@@ -1,102 +1,175 @@
 # Math Skills
 
-A Go program that calculates statistical measures (Average, Median, Variance, and Standard Deviation) from a data file as part of the Zone01 Athens curriculum.
+![Go Version](https://img.shields.io/badge/Go-1.21+-00ADD8?style=flat&logo=go)
+![License](https://img.shields.io/badge/License-MIT-green.svg)
+![Tests](https://img.shields.io/badge/Tests-Passing-brightgreen)
+![Zone01](https://img.shields.io/badge/Zone01-Athens-blue)
+
+A professional Go program that calculates statistical measures from numerical datasets. Built as part of the Zone01 Athens curriculum.
+
+---
+
+## Description
+
+This program reads a dataset from a file and computes four fundamental statistical measures:
+- **Average** (Mean)
+- **Median** (Middle value)
+- **Variance** (Data spread)
+- **Standard Deviation** (Square root of variance)
+
+All results are output as rounded integers following the project specifications.
+
+---
+
+## Features
+
+✨ **Core Functionality**
+- Calculates Average, Median, Variance, and Standard Deviation
+- Handles datasets of any size
+- Robust error handling for invalid input
+- Standard library only (no external dependencies)
+
+🏗️ **Professional Structure**
+- Modular package design with separated concerns
+- Comprehensive unit tests for all functions
+- Clean architecture following Go best practices
+- Makefile for easy build and test automation
+
+📊 **Accurate Calculations**
+- Population variance (not sample variance)
+- Proper median calculation for even/odd counts
+- Standard mathematical rounding
+
+---
 
 ## Repository Structure
 
 ```
 math-skills/
-├── main.go      # Main program with statistical calculations
-├── data.txt     # Sample data file for testing
-├── README.md    # Project documentation
-└── LICENSE      # MIT License
+├── cmd/           //Application entry point
+├── stats/         //Statistical calculation functions
+├── testfiles/     //Unit tests for all functions
+├── examples/      //Sample data files
+├── docs/          //Project documentation
+├── standard/      //License and contributing guidelines
+├── Makefile
+├── go.mod
+├── .gitignore
+└── README.md
 ```
+
+---
 
 ## How to Run
 
+### Quick Start
 ```bash
-go run main.go data.txt
+# Build and run with example data
+make run
+
+# Or manually
+go run cmd/main.go examples/data1.txt
 ```
 
-## Input Format
-
-The data file should contain one integer per line:
-```
-189
-113
-121
-114
-145
-110
-```
-
-## Output Format
-
-The program outputs four statistical measures as rounded integers:
-```
-Average: 132
-Median: 118
-Variance: 785
-Standard Deviation: 28
-```
-
-## Testing
-
-### For Auditors
-
-1. Download the necessary file from [here](https://github.com/01-edu/public/blob/master/subjects/math-skills/audit/README.md)
-2. Run the script with `./bin/math-skills` or `./run.sh math-skills`, generate a `data.txt` file, copy it to this repository
-3. Run this program with the generated file:
-   ```bash
-   go run main.go data.txt
-   ```
-4. Compare the outputs to verify correctness
-
-### Manual Testing
-
-To test with the provided data file:
+### Build Binary
 ```bash
-go run main.go data.txt
+# Build executable
+make build
+
+# Run the binary
+./math-skills examples/data1.txt
 ```
 
-To test with your own data file:
+### Run Tests
 ```bash
-go run main.go your_data_file.txt
+# Run all tests
+make test
+
+# Run with verbose output
+go test ./... -v
 ```
 
-## Example
-
-With the provided `data.txt` containing:
-```
-189
-113
-121
-114
-145
-110
+### Other Commands
+```bash
+make clean    # Remove built binaries
+make fmt      # Format code
+make vet      # Check code quality
+make help     # Show all commands
 ```
 
-The output will be:
-```
-Average: 132
-Median: 118
-Variance: 785
-Standard Deviation: 28
-```
+---
 
 ## Requirements
 
-- Go 1.11 or higher
-- No external dependencies (uses only standard library)
+- **Go**: Version 1.21 or higher
+- **OS**: Linux, macOS, or Windows
+- **Dependencies**: None (standard library only)
 
-## Functional Requirements
+### Input File Format
+- One integer per line
+- Empty lines are ignored
+- Example:
+  ```
+  189
+  113
+  121
+  114
+  145
+  110
+  ```
 
-This program implements the following statistical calculations:
-- **Average**: Sum of all values divided by count
-- **Median**: Middle value when data is sorted (or average of two middle values for even count)
-- **Variance**: Population variance (sum of squared differences from mean, divided by N)
-- **Standard Deviation**: Square root of variance
+### Output Format
+```
+Average: 132
+Median: 118
+Variance: 785
+Standard Deviation: 28
+```
+
+---
+
+## Algorithm Glossary
+
+### Average (Arithmetic Mean)
+The sum of all values divided by the count of values.
+
+**Formula**: `μ = (Σxᵢ) / n`
+
+**Example**: `[10, 20, 30]` → `(10+20+30)/3 = 20`
+
+---
+
+### Median
+The middle value when data is sorted. For even counts, the average of the two middle values.
+
+**Formula**: 
+- Odd count: `x[(n+1)/2]`
+- Even count: `(x[n/2] + x[n/2+1]) / 2`
+
+**Example**: 
+- `[1, 2, 3]` → `2`
+- `[1, 2, 3, 4]` → `(2+3)/2 = 2.5`
+
+---
+
+### Variance (Population)
+Measures how spread out numbers are from the mean. Uses population variance (divides by N, not N-1).
+
+**Formula**: `σ² = Σ(xᵢ - μ)² / n`
+
+**Example**: `[2, 4, 6]` → Mean=4, Variance=`((2-4)²+(4-4)²+(6-4)²)/3 = 8/3 ≈ 2.67`
+
+---
+
+### Standard Deviation
+The square root of variance. Represents average distance from the mean.
+
+**Formula**: `σ = √(σ²)`
+
+**Example**: If variance = 4, then standard deviation = 2
+
+---
 
 ## License
 
-[MIT LICENSE](LICENSE)
+This project is licensed under the [MIT License](standard/LICENSE).
