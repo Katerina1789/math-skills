@@ -1,6 +1,6 @@
 # Math Skills
 
-[![Go Version](https://img.shields.io/badge/Go-1.21+-00ADD8?style=for-the-badge&logo=go)](https://golang.org/) [![License](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)](https://opensource.org/licenses/MIT) [![Tests](https://img.shields.io/badge/Tests-Passed-brightgreen?style=for-the-badge)](docs/audit.md) [![Zone01](https://img.shields.io/badge/Zone01-Athens-blue?style=for-the-badge)](https://zone01.gr/gr/)
+[![Go Version](https://img.shields.io/badge/Go-1.21+-00ADD8?style=for-the-badge&logo=go)](https://golang.org/) [![License](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)](https://opensource.org/licenses/MIT) [![Tests](https://img.shields.io/badge/Tests-Passed-brightgreen?style=for-the-badge)](docs/audit_guide.md) [![Zone01](https://img.shields.io/badge/Zone01-Athens-blue?style=for-the-badge)](https://zone01.gr/gr/)
 
 A professional Go program that calculates statistical measures from numerical datasets. Built as part of the Zone01 Athens curriculum.
 
